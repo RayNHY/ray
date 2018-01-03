@@ -2,7 +2,7 @@
 # Welcome Make a Chatbot 'Ray' Project !
 # Staring 2018.01.01 04:15:00
 
-# std_LinearAlgebra = "IwantDie"
+std_LinearAlgebra = "IwantDie"
 std_MachineLearning = "Very Hard"
 std_Math = "Hard"
 std_Algorithm = "OhmyGod"
