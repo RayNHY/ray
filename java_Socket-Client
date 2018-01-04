@@ -1,0 +1,31 @@
+import java.net.*;
+import javax.print.*;
+import java.io.*;
+
+
+public class DateClient {
+	public static void main(String[] args) {
+		try {
+			
+			// Save User Port
+			Socket sock = new Socket("127.0.0.1", 6013);
+			
+			// Set Ready for Send Post
+			InputStream is = sock.getInputStream();
+			
+			// Must have letter(is) in Post Bag(bin)
+      BufferedReader bin = new BufferedReader(new InputStreamReader(is));
+			
+			// just ~ letter
+			String letter;
+			
+			// Not have letter, if keep looking and read the letter if is available close the socket.			
+      while ( (letter = bin.readLine()) != null)
+				System.out.println(letter);
+			sock.close();
+			
+		} catch (IOException ioe) {
+			System.err.println(ioe);
+		}
+	}
+}
