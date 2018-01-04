@@ -1,0 +1,31 @@
+import java.net.*;
+import javax.print.*;
+import java.io.*;
+
+public class DateServer {
+	public static void main(String[] args) {
+		try {
+			
+			ServerSocket sock = new ServerSocket(6013);
+			
+			// Connecting Area
+			while(true) {
+				
+				// open the door Post Office
+				Socket client = sock.accept();
+				
+				// Send Post to Post Office
+				PrintWriter pw = new PrintWriter(client.getOutputStream(), true);
+				
+				// write Post Subject
+				pw.println(new java.util.Date().toString());
+				
+				// close the Post Office
+				client.close();
+			}
+			
+		} catch (IOException ioe) {
+			System.err.println(ioe);
+		}
+	}
+}
