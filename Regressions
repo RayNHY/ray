@@ -1,0 +1,36 @@
+// 1. 테스트 해볼만한 2차원 배열
+arr = [[3,-1], [5,2], [7,4], [-1,10]]
+
+// 2. 로지스틱 회귀에 사용될 함수
+def Regressions(arr) :
+
+    // 3. 앞자리 숫자 / 뒷자리 숫자로 쪼개어 담길 리스트
+    v_front = []
+    b_front = []
+
+    // 4. 파라미터 계산값들이 담길 리스트 및 변수
+    total = []
+    L_value = []
+    k = 0
+
+    // 5. 파라미터 기반 계산과 각각의 중요 확률을 찾아내는 코드
+    for i in range(4) :
+        v_front.append(arr[i][0])
+        b_front.append(arr[i][1])
+
+        Q_value = round(exp_math(v_front[i], b_front[i]), 1)
+        total.append(Q_value)
+        k += Q_value
+
+    for i in range(4) :
+        L_total = total[i]/k
+        L_value.append(L_total)
+
+    return L_value, k
+
+
+// 6. 찾아내었다, 각 파라미터리스트의 확률값을 찾아내었다.
+print("총합", Regressions(arr))
+
+// 7. 결과값
+총합 ([0.00010712031638130201, 0.015874072830234565, 0.8667206128440155, 0.1172981940093687], 69081.2)
