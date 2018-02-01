@@ -1,0 +1,27 @@
+from konlpy.tag import Twitter
+from bs4 import BeautifulSoup as bs
+import codecs
+
+# utf-16 파일을 열고 글자 출력
+fp = codecs.open("7CT_0005.txt", "r", encoding="utf-16")
+soup = bs(fp, "html.parser")
+body = soup.select_one("text")
+text = body.getText()
+
+# 트위터 분석기로 텍스트 처리
+tws = Twitter()
+words = {}
+line = text.split("\r\n")
+
+for lines in line :
+    sentence = tws.pos(lines)
+    for word in sentence :
+        if word[1] == "Noun" :
+            if not (word[0] in words) :
+                words[word[0]] = 0
+            words[word[0]] += 1
+
+# 많이 사용된 명사 출력
+values = sorted(words.items(), key=lambda x : x[1], reverse=True)
+for word, count in values[:50] :
+    print("{0}({1})".format(word, count), end=" ")
