@@ -1,0 +1,29 @@
+def ngram(string, number):
+    res = []
+    stringlen = len(string) - number + 1
+    for i in range(stringlen):
+        strtostr = string[i:i+number]
+        res.append(strtostr)
+    return res
+
+def diff_ngram(stringA, stringB, number):
+    a = ngram(stringA, number)
+    b = ngram(stringB, number)
+    r = []
+    cnt = 0
+    for i in a:
+        for j in b:
+            if i == j:
+                cnt += 1
+                r.append(i)
+    return cnt / len(a), r
+
+string1 = "노원구에서 복권을 사 볼 예정입니다."
+string2 = "복권에 당첨되면 노원구에 있는 아파트를 매수할 예정입니다."
+
+# 2-gram
+r2, word2 = diff_ngram(string1, string2, 2)
+print("2-gram:", r2, word2)
+# 3-gram
+r3, word3  = diff_ngram(string1, string2, 3)
+print("3-gram:", r3, word3)
