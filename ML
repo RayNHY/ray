@@ -1,0 +1,33 @@
+# 레벤슈타인 거리
+def distance(talk1, talk2) :
+    if talk1 == talk2 : return 0
+    talk1len = len(talk1)
+    talk2len = len(talk2)
+
+    if talk1 == "" : return talk2len
+    if talk2 == "" : return talk1len
+
+    matrix = [[] for i in range(talk1len+1)]
+    for i in range(talk1len+1) :
+        matrix[i] = [0 for j in range(talk2len+1)]
+
+    for i in range(talk1len+1) :
+        matrix[i][0] = i
+    for j in range(talk2len+1) :
+        matrix[0][j] = j
+
+    for i in range(1, talk1len+1) :
+        account = talk1[i-1]
+        for j in range(1, talk2len+1) :
+            bccount = talk2[j-1]
+            cost = 0 if (account == bccount) else 1
+            matrix[i][j] = min([matrix[i-1][j] + 1, matrix[i][j-1] + 1, matrix[i-1][j-1] + cost])
+    return matrix[talk1len][talk2len]
+
+print(distance("가나다라", "가나다바"))
+
+sample = ["도검매니아", "검정마스크", "도검스트라이커", "도곡동아기", "공부매니아"]
+base = sample[0]
+r = sorted(sample, key = lambda n : distance(base, n))
+for n in r :
+    print(distance(base, n), n)
