@@ -1,0 +1,54 @@
+# import library
+
+
+import os
+import sys
+import requests
+import urllib
+import json
+
+
+# naver api - user_key
+client_id = "user-id"
+client_secret = "user-secret"
+
+
+# find data : basic dataset options
+text_box = ["user_keyword"]
+want_cnt = 99 + 1
+
+# options apply : text_box
+# for i in range(0, len(text_box)) :
+#     encText = urllib.parse.quote(text_box[i])
+#
+#     # crolw data to naver_blog
+#     for j in range(1, freq) :
+#         if j == 5000 : break
+#         if j % 99 == 0 : 
+#             break
+#         else :
+#             url_blog = "https://openapi.naver.com/v1/search/blog?query=" + encText + "&start=" + str(j) + "&display=" + str(freq)
+#             request = urllib.request.Request(url_blog)
+#
+#             request.add_header("X-Naver-Client-Id",client_id)
+#             request.add_header("X-Naver-Client-Secret",client_secret)
+#
+#             response = urllib.request.urlopen(request)
+#             rescode = response.getcode()
+#             response_body = response.read()
+#
+#             json_rt = response_body.decode('utf-8')
+#             data = json.loads(json_rt)
+#
+#             if(rescode==200):
+#                 print("total : ", data['total'])
+#                 print("No.   : " + str(j))
+#                 print("type  : blog")
+#                 print("word  : " + text_box[i])
+#                 print("title : " + data['items'][j]['title'])
+#                 print("desc  : " + data['items'][j]['description'])
+#                 print("link  : " + data['items'][j]['link'])
+#                 print("postdate : " + data["items"][j]['postdate'])
+#                 print("\n")
+#             else:
+#                 print("Error Code:" + rescode)
