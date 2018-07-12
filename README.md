@@ -1,8 +1,8 @@
 # Development story
-# Welcome 'Ray' Project !
-# Staring 2016.01.01 04:15:00
 
-Development story
+- Welcome 'Ray' Project !
+- Staring 2016.01.01 04:15:00
+
 
 1. Building a website
  - Django
